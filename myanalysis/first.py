@@ -57,6 +57,19 @@ class tp:
         print(data)
         return data
 
+    def TPex(self):
+        df = pd.read_csv(DATA_DIRS[0] + '/MoviesOnStreamingPlatforms_updated.csv')
+        df['Country'] = df['Country'].str.split(',')
+
+        df = (df
+              .set_index(['ID', 'Title', 'Year', 'Age', 'IMDb', 'Rotten Tomatoes', 'Netflix', 'Hulu',
+                          'Prime Video', 'Disney+', 'Directors', 'Genres', 'Language', 'Runtime'])['Country']
+              .apply(pd.Series)
+              .stack()
+              .reset_index()
+              .drop('level_14', axis=1)
+              .rename(columns={0: 'Country'}))
+        return data
 
 if __name__=='__main__':
     tp().TP32('Netflix');
