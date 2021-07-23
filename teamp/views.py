@@ -36,3 +36,4 @@ def tpex(request):
 def TPex(request):
     data = tp().TPex()
     return HttpResponse(json.dumps(data), content_type='application/json');
+
