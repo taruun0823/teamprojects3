@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 
 
+
 import json
 from config.settings import DATA_DIRS
 
@@ -57,6 +58,8 @@ class tp:
         print(data)
         return data
 
+
+
     def TPex(self):
         df = pd.read_csv(DATA_DIRS[0] + '/MoviesOnStreamingPlatforms_updated.csv')
         df['Country'] = df['Country'].str.split(',')
@@ -69,8 +72,39 @@ class tp:
               .reset_index()
               .drop('level_14', axis=1)
               .rename(columns={0: 'Country'}))
-        return data
+        chains = df['Country'].value_counts()[:20]
+        label = []
+        count =[]
+        for i in chains.index:
+            label.append(i)
+        for j in chains.values:
+            count.append(j)
+
+
+        data =[]
+        for p in range(len(label)):
+            for q in range(len(label)):
+                    fdata = {
+                        'name': label[q],
+                        'y': int(count[q]),
+                        'drilldown': 'null'
+
+                    }
+                    data.append(fdata)
+        print(data)
+        return(data)
+
+
+
+
+
+
+
+
+
+
+
 
 if __name__=='__main__':
-    tp().TP32('Netflix');
+    tp().TPex();
 

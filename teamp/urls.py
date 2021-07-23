@@ -25,6 +25,7 @@ urlpatterns = [
     path('TP1', views.TP1, name='TP1'),
     path('tp32', views.tp32, name='tp32'),
     path('TP32', views.TP32, name='TP32'),
-    path('tp322', views.tp322, name='tp322'),
+    path('tpex', views.tpex, name='tpex'),
+    path('TPex', views.TPex, name='TPex'),
 
 ]

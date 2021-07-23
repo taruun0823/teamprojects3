@@ -27,10 +27,12 @@ def tp32(request):
 
 def TP32(request):
     ott = request.GET['ott']
-    print(ott)
     data = tp().TP32(ott)
-    print('데이터 전송 성공')
     return HttpResponse(json.dumps(data), content_type='application/json');
 
-def tp322(request):
-    return render(request, 'tp322.html');
+def tpex(request):
+    return render(request, 'tpex.html');
+
+def TPex(request):
+    data = tp().TPex()
+    return HttpResponse(json.dumps(data), content_type='application/json');
